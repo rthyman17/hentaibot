@@ -5,6 +5,7 @@ const request = require('request');
 const client = new Discord.Client();
 const config = require("./config.json");
 
+
 //attaching the config to the CLIENT so it's accessible everywhere.
 client.config = config;
 
@@ -16,6 +17,9 @@ fs.readdir("./events/", (err, files) => {
     client.on(eventName, event.bind(null, client));
   });
 });
+
+client.commands = new Enmap();
+//loading all commands
 
 //loading 18+ NSFW commands
 fs.readdir("./commands/nsfw/", (err, files) => {
@@ -34,12 +38,12 @@ var timer;
 var i = 0;
   timer = client.setInterval(function () {
     var gamePresence = [
-      `hentai`,
-      `nekos`,
-      `-help`,
       `anime`,
-      `${client.guilds.size} nekos!`,
-      `${client.users.size} traps!`
+      `sailor moon`,
+      `earth`,
+      `hentai`,
+      `${client.guilds.size} Planets!`,
+      `${client.users.size} stars!`
     ];
     client.user.setPresence({ game: { name: gamePresence[i%gamePresence.length], type: 3 } });
     i++;
@@ -47,4 +51,29 @@ var i = 0;
 //End of code
 
 //Log the Bot in.
+
+client.on('guildMemberAdd', member => {
+  let logChannel = member.guild.channels.find('name', 'welcome');
+  
+    let logEmbed = new Discord.RichEmbed()
+    .setAuthor("New member joined!") 
+    .setDescription("Welcome to the server " + member.user.username.toString())
+    .setColor('RANDOM')
+    .setFooter("enjoy your stay", member.user.displayAvatarURL)
+    .setTimestamp()
+    logChannel.send(logEmbed);
+  })
+  client.on('guildMemberRemove', member => {
+  let logChannel = member.guild.channels.find('name', 'welcome');
+  
+    let logEmbed = new Discord.RichEmbed()
+    .setAuthor("Member left the server") 
+      .setDescription("Goodbye " + member.user.username )
+    .setFooter("sorry to see you leave", member.user.displayAvatarURL)
+    .setColor('RANDOM')
+    .setTimestamp()
+    logChannel.send(logEmbed);
+  })
+  
+
 client.login(config.token);
