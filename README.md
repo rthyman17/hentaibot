@@ -20,7 +20,7 @@ Your token is what you use to log the bot in.
    "devID": "Your discord id"
    }
   ```
-  * You may now save the config and move the the installation process.
+  * You may now save the config and move to the installation process.
 
 ## How to install:
 1. Install node.js at https://nodejs.org/en/
