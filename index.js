@@ -38,12 +38,11 @@ var timer;
 var i = 0;
   timer = client.setInterval(function () {
     var gamePresence = [
-      `anime`,
-      `sailor moon`,
-      `earth`,
       `hentai`,
-      `${client.guilds.size} Planets!`,
-      `${client.users.size} stars!`
+      `;help`,
+      `porn`,
+      `${client.guilds.size} Servers!`,
+      `${client.users.size} Users!`
     ];
     client.user.setPresence({ game: { name: gamePresence[i%gamePresence.length], type: 3 } });
     i++;
