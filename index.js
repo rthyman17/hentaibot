@@ -39,7 +39,7 @@ var i = 0;
   timer = client.setInterval(function () {
     var gamePresence = [
       `hentai`,
-      `;help`,
+      `-help`,
       `porn`,
       `${client.guilds.size} Servers!`,
       `${client.users.size} Users!`
